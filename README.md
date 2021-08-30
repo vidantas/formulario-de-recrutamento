@@ -5,5 +5,5 @@ O desafio consistia em desenvolver uma Landing Page da empresa fictícia JobsNet
 
 
 ## <h3 align="center">
-<a href="https://banco-de-curriculos.herokuapp.com/">[Visualizar página!]</a>
+<a href="">[Visualizar página!]</a>
 </h3>
