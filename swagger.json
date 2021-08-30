@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API de um formulário de recrutamento para cadastramento de usuários.",
+    "version": "1.1.0",
+    "title": "Formulário de Recrutamento",
+    "contact": {
+      "email": "vitoria.dantasb@gmail.com"
+    }
+  },
+  "host": "banco-de-curriculos.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "formulario-de-recrutamento",
+      "description": "Registro de Currículos."
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/add": {
+      "post": {
+        "tags": [
+          "formulario-de-recrutamento"
+        ],
+        "summary": "Cadastro do usuário",
+        "description": "Recebe o cadastro do candidato por meio das informações registradas no formulário",
+        "operationId": "cadastroCandidato",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados Pessoais do Candidato",
+            "required": true,
+            "schema": {
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Vitoria"
+                },
+                "cargo": {
+                  "type": "string",
+                  "example": "Desenvolvedor de Software"
+                },
+                "dataNasc": {
+                  "type": "string",
+                  "example": "06/11/2001"
+                },
+                "estadoCivil": {
+                  "type": "string",
+                  "example": "Solteiro"
+                },
+                "sexo": {
+                  "type": "string",
+                  "example": "Feminino"
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "79012-576"
+                },
+                "rua": {
+                  "type": "string",
+                  "example": "Rua do Cascão"
+                },
+                "numero": {
+                  "type": "string",
+                  "example": "321"
+                },
+                "bairro": {
+                  "type": "string",
+                  "example": "Chaves"
+                },
+                "cidade": {
+                  "type": "string",
+                  "example": "Uberlândia"
+                },
+                "estado": {
+                  "type": "string",
+                  "example": "MG"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "seuemail@gmail.com"
+                },
+                "celular": {
+                  "type": "string",
+                  "example": "1191234-5678"
+                },
+                "tel1": {
+                  "type": "string",
+                  "example": ""
+                },
+                "tel2": {
+                  "type": "string",
+                  "example": "113333-3333"
+                },
+                "identidade": {
+                  "type": "string",
+                  "example": "12.345.678-9"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "123.456.789-10"
+                },
+                "habilitacao": {
+                  "type": "string",
+                  "example": "catA"
+                },
+                "carro": {
+                  "type": "string",
+                  "example": "Sim"
+                }
+              },
+              "required": [
+                "cpf"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "301": {
+            "description": "Cadastro efetuado, redireciona para a página de conclusão."
+          },
+          "400": {
+            "description": "Formulário inválido (e.g. CPF já cadastrado)"
+          },
+          "500": {
+            "description": "Erro na submissão para o banco de dados."
+          }
+        }
+      }
+    },
+    "/find/{cpf}": {
+      "get": {
+        "tags": [
+          "formulario-de-recrutamento"
+        ],
+        "summary": "Busca usuário pelo CPF",
+        "description": "Busca o cadastro do usuário no banco de dados, informando o CPF",
+        "operationId": "buscaCandidato",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpf",
+            "description": "CPF do candidato",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Candidato encontrado, retorna dados do cadastro."
+          },
+          "500": {
+            "description": "Candidato não encontrado."
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Confira o projeto completo no GitHub",
+    "url": "https://github.com/vidantas/formulario-de-recrutamento"
+  }
+}
